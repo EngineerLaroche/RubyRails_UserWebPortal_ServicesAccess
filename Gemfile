@@ -26,6 +26,7 @@ gem 'turbolinks',              '5.0.1'
 gem 'jbuilder',                '2.7.0'
 gem 'coffee-script-source',    '=1.12.2'
 gem 'heroku-deflater',         '0.6.3'
+gem 'heroku-api',              '0.4.3'
 gem 'rack-timeout',            '0.4.2'
 gem 'rails_12factor',          '0.0.3'
 
