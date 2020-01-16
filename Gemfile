@@ -29,13 +29,14 @@ gem 'heroku-deflater',         '0.6.3'
 gem 'heroku-api',              '0.4.3'
 gem 'rack-timeout',            '0.4.2'
 gem 'rails_12factor',          '0.0.3'
+gem 'net-ssh-gateway',         '2.0.0'
+gem 'rubyzip',                 '1.2.1'
 
 gem 'audited'
 gem 'heroku', '3.41.5'
 gem 'language-converter'
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem 'attr_encrypted'
-gem 'net-ssh-gateway',         '2.0.0'
 
 
 #**************************************************************
