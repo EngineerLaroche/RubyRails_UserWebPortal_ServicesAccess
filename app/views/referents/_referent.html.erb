@@ -1,0 +1,95 @@
+<tr>
+<% if current_page?(referents_path) %>
+
+		<td><%= referent.id %></td>
+		<td><%= link_to referent.prenom, referent %></td>
+		<td><%= link_to referent.nom, referent %></td>
+		<td><%= referent.titre %></td>
+		<td><%= referent.tel_bureau %></td>
+		<td><%= referent.email %></td>
+
+	<% if current_user.role == 'coordonateur' || current_user.role == 'directeur' %>
+
+		<td><%= link_to "modifier", edit_referent_path(referent) %></td>
+		<td><%= link_to "supprimer", referent, method: :delete, data: { confirm: "Êtes-vous certain ?" } %></td>
+
+	<% else %>
+
+        <td></td>
+        <td></td>
+
+    <% end %>
+
+<% elsif current_page?(ajouter_retirer_ref_organisme_path) %>
+
+		<td><%= referent.id %></td>
+		<td><%= link_to referent.prenom, referent %></td>
+		<td><%= link_to referent.nom, referent %></td>
+		<td><%= referent.titre %></td>
+		<td><%= referent.tel_bureau %></td>
+		<td><%= referent.email %></td>
+
+    	<% if referent.followed_by?(current_organisme) %>
+
+		    <td><%= link_to "Retirer", {controller: 'organismes', action: 'retirer', organisme_id: current_organisme.id, referent_id: referent.id} %></td>
+		    <td></td>
+
+		<% else %>
+
+			<td></td>
+		    <td><%= link_to "Ajouter", {controller: 'organismes', action: 'ajouter', organisme_id: current_organisme.id, referent_id: referent.id} %></td>
+
+		<% end %>
+
+<% elsif current_page?(ajouter_retirer_ref_organisme_referent_path) %>
+
+		<td><%= referent.id %></td>
+		<td><%= link_to referent.prenom, referent %></td>
+		<td><%= link_to referent.nom, referent %></td>
+		<td><%= referent.titre %></td>
+		<td><%= referent.tel_bureau %></td>
+		<td><%= referent.email %></td>
+
+    	<% if referent.followed_by?(current_organisme_referent) %>
+
+		    <td><%= link_to "Retirer", {controller: 'organisme_referents', action: 'retirer', organisme_referent_id: current_organisme_referent.id, referent_id: referent.id} %></td>
+		    <td></td>
+
+		<% else %>
+
+			<td></td>
+		    <td><%= link_to "Ajouter", {controller: 'organisme_referents', action: 'ajouter', organisme_referent_id: current_organisme_referent.id, referent_id: referent.id} %></td>
+
+		<% end %>
+		
+<% elsif current_page?(organisme_path) %>
+
+	<% if referent.followed_by?(current_organisme) %>
+
+		<td><%= referent.id %></td>
+		<td><%= link_to referent.prenom, referent %></td>
+		<td><%= link_to referent.nom, referent %></td>
+		<td><%= referent.titre %></td>
+		<td><%= referent.tel_bureau %></td>
+		<td><%= referent.email %></td>
+        <th></th>
+        <th></th>
+		
+	<% end %>
+
+<% elsif current_page?(organisme_referent_path) %>
+
+	<% if referent.followed_by?(current_organisme_referent) %>
+
+		<td><%= referent.id %></td>
+		<td><%= link_to referent.prenom, referent %></td>
+		<td><%= link_to referent.nom, referent %></td>
+		<td><%= referent.titre %></td>
+		<td><%= referent.tel_bureau %></td>
+		<td><%= referent.email %></td>
+        <th></th>
+        <th></th>
+		
+	<% end %>	  		  
+<% end %>
+</tr>

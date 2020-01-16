@@ -1,0 +1,28 @@
+<% provide(:title, 'Tous Usagers') %>
+<div class="container">
+  <h1>Tous les Usagers</h1>
+
+  <%= form_tag(users_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Username ou Role" %>
+    <%= submit_tag "Recherche", class: "btn btn-primary", :email => nil %>
+  <% end %>
+  <br/>
+  <br/>
+  <table class="table table-striped">
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Role</th>
+      <th>Email</th>
+      <th>Membre depuis</th>
+      <th></th>
+      <th></th>
+
+      <% if @users.present? %>
+        <%= render @users %>
+      <% else %>
+        <p>Il n'y a pas de Users contenant l'information : <%= params[:search] %>.</p>
+      <% end %>
+    </tr>
+  </table>
+</div>

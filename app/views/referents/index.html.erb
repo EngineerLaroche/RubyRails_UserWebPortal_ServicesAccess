@@ -1,0 +1,37 @@
+<% provide(:title, 'Tous Referents') %>
+<div class="container">
+
+  <% if current_page?(referents_path) %>
+
+    <h1>Tous les Referents</h1>
+
+    <%= form_tag(referents_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Prenom ou Nom ou Titre ou Telephone_Bureau ou ID Organisme" %>
+      <%= submit_tag "Recherche", class: "btn btn-primary", :email => nil %>
+    <% end %>
+  <% end %>
+  <br/>
+  <br/>
+  <table class="table table-striped">
+  <tr>
+    <th>ID</th>
+    <th>Prenom</th>
+    <th>Nom</th>
+    <th>Titre</th>
+    <th>Tel. bureau</th>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+
+  <% if current_page?(referents_path) %>
+    <% if @referents.present? %>
+      <%= render @referents %>
+    <% else %>
+      <p>Il n'y a pas de Referents contenant l'information : <%= params[:search] %></p>
+    <% end %>
+  <% else %>
+      <%= render @referents %>
+  <% end %>  
+  </tr>
+</table>
+</div>

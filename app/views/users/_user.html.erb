@@ -1,0 +1,25 @@
+<tr>
+  <td><%= user.id %></td>
+  <td><%= link_to user.name, user %></td>
+  <td><%= user.role %></td>
+  <td><%= user.email %></td>
+  <td><%= user.created_at %></td>
+  
+  <% if current_user.role == 'directeur' %>
+      <% if !current_user?(user) %>
+        <td><%= link_to "modifier", edit_user_path(user) %></td>
+        <td><%= link_to "supprimer", user, method: :delete, data: { confirm: "Êtes-vous certain ?" } %></td>
+      <% end %>
+
+  <% elsif current_user.role == 'coordonateur' %>
+      <% if !current_user?(user) && user.role != 'directeur' %>
+        <td><%= link_to "modifier", edit_user_path(user) %></td>
+        <td><%= link_to "supprimer", user, method: :delete, data: { confirm: "Êtes-vous certain ?" } %></td>
+      <% end %>
+  <% else %>
+
+    <td></td>
+    <td></td>
+
+  <% end %>
+</tr>

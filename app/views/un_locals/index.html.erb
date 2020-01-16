@@ -1,0 +1,37 @@
+<% provide(:title, 'Tous les Locaux') %>
+<div class="container">
+
+<% if current_page?(un_locals_path) %>
+
+  <h1>Tous les Locaux</h1>
+
+  <%= form_tag(un_locals_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Nom" %>
+    <%= submit_tag "Recherche", class: "btn btn-primary", :email => nil %>
+  <% end %>
+<% end %>  
+  <br/>
+  <br/>
+  <table class="table table-striped">
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Disponible</th>
+      <th>Nombre de places</th>
+      <th>ID Pt. de Service</th>
+      <th></th>
+      <th></th>
+
+
+  <% if current_page?(un_locals_path) %>
+      <% if @un_locals.present? %>
+        <%= render @un_locals %>
+      <% else %>
+        <p>Il n'y a pas de locaux contenant l'information : <%= params[:search] %>.</p>
+      <% end %>
+  <% else %>
+      <%= render @un_locals %>
+  <% end %>    
+    </tr>
+  </table>
+</div>

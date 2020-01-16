@@ -1,0 +1,83 @@
+<% provide(:title, @referent.prenom) %>
+
+<div class="row">
+  <h1>Compte Referent</h1>
+  <aside class="col-md-12">
+    <section>
+      <h1>
+      <br/>
+      <font size="5">
+        <strong>ID referent : <a><%= @referent.id %></a></strong>
+      </font>  
+      </h1>  
+      <h1>
+        <font size="6">
+          <strong>
+            Nom : <a><%= @referent.prenom %> <%= @referent.nom %></a>
+          </strong>
+        </font>
+      </h1>
+      <% if current_user.role == 'directeur' || current_user.role == 'coordonateur' %>
+        <li><%= link_to "Modifier référent", edit_referent_path(@referent) %></li>
+      <% end %>
+       <br/>
+      <h1>
+        <font size="5">
+          <strong>Titre : <a><%= @referent.titre %></a></strong>
+          <br/>
+          <strong>Email : <a><%= @referent.email %></a></strong>
+        </font>
+      </h1>
+      <br/>
+      <br/>
+      <hr>
+      <hr>
+    <div id="main-container" class="container">
+      <div id="Contact" class="col-md-6">
+      <h1>
+        <font size="5">
+          <strong>Contact</strong>
+        </font>
+      </h1>
+      <br/>
+      <font size="2">
+        <h1>Telephone bureau : <a> <%= @referent.tel_bureau %> </a></h1>
+        <h1>Telephone cellulaire : <a> <%= @referent.tel_cell %> </a></h1>
+        <h1>Fax : <a> <%= @referent.fax %> </a></h1>
+      </font>
+    </div>
+    <div id="Preference" class="col-md-6">
+      <h1>
+        <font size="5">
+          <strong>Preference d'envoi rapport</strong>
+        </font>
+      </h1>
+      <br/>
+      <h1>Preference no.1 : <a> <%= @referent.pref_rapport_1 %> </a></h1>
+      <h1>Preference no.2 : <a> <%= @referent.pref_rapport_2 %> </a></h1>
+      <h1>Preference no.3 : <a> <%= @referent.pref_rapport_3 %> </a></h1>
+    </div>
+  </div>
+  <br/>
+  <hr>
+  <h1>
+    <font size="5">
+      <strong>Appartient aux Organismes</strong>
+    </font>
+  </h1> 
+  <%= render template: 'organismes/index' %>
+  <br/>
+      <hr>
+        <h1>
+        <font size="5">
+          <strong>Notifications</strong>
+        </font>
+      </h1>
+      <br/>
+         <font size="2">
+        <h1>Actif depuis : <a> <%= @referent.created_at %> </a></h1>
+        <h1>Derniere Mise a Jour : <a> <%= @referent.updated_at %> </a></h1>
+      </font>
+    </section>
+  </aside>
+</div>

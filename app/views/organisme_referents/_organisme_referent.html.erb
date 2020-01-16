@@ -1,0 +1,62 @@
+<tr>
+<% if current_page?(organisme_referents_path) %>
+
+    <td><%= organisme_referent.id %></td>
+    <td><%= link_to organisme_referent.nom, organisme_referent %></td>
+    <td><%= organisme_referent.tel %></td>
+    <td><%= organisme_referent.email %></td>
+    <td><%= organisme_referent.website %></td>
+    <td><%= organisme_referent.est_actif %></td>
+    <td><%= organisme_referent.organismes_id %></td>
+ 
+    <% if current_user.role == 'coordonateur' || current_user.role == 'directeur' %>
+
+      <td><%= link_to "modifier", edit_organisme_referent_path(organisme_referent) %></td>
+      <td><%= link_to "supprimer", organisme_referent, method: :delete, data: { confirm: "Êtes-vous certain ?" } %></td>
+
+    <% else %>
+
+        <td></td>
+        <td></td>
+
+    <% end %>
+
+<% elsif current_page?(ajouter_retirer_org_ref_organisme_path) %>
+
+      <td><%= organisme_referent.id %></td>
+      <td><%= link_to organisme_referent.nom, organisme_referent %></td>
+      <td><%= organisme_referent.tel %></td>
+      <td><%= organisme_referent.email %></td>
+      <td><%= organisme_referent.website %></td>
+      <td><%= organisme_referent.est_actif %></td>
+      <td><%= organisme_referent.organismes_id %></td>
+
+      <% if organisme_referent.followed_by?(current_organisme) %>
+
+        <td><%= link_to "Retirer", {controller: 'organismes', action: 'retirer', organisme_id: current_organisme.id, organisme_referent_id: organisme_referent.id} %></td>
+        <td></td>
+
+      <% else %>
+
+        <td></td>
+        <td><%= link_to "Ajouter", {controller: 'organismes', action: 'ajouter', organisme_id: current_organisme.id, organisme_referent_id: organisme_referent.id} %></td>
+          
+    <% end %>
+
+<% elsif current_page?(organisme_path) %>
+
+  <% if organisme_referent.followed_by?(current_organisme) %>
+
+        <td><%= organisme_referent.id %></td>
+        <td><%= link_to organisme_referent.nom, organisme_referent %></td>
+        <td><%= organisme_referent.tel %></td>
+        <td><%= organisme_referent.email %></td>
+        <td><%= organisme_referent.website %></td>
+        <td><%= organisme_referent.est_actif %></td>
+        <td><%= organisme_referent.organismes_id %></td>
+        <td></td>
+        <td></td>
+
+    <% end %>
+<% end %>
+</tr>

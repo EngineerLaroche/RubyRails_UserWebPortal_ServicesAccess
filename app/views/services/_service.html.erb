@@ -1,0 +1,65 @@
+<tr>
+<% if current_page?(services_path) %>
+
+  <td><%= service.id %></td>
+  <td><%= link_to service.nom, service %></td>
+  <td><%= service.description %></td>
+  <td><%= service.tarification_parent %> $</td>
+  <td><%= service.tarification_cisss %> $</td>
+  <td><%= service.est_actif %></td>
+  <td><%= service.est_subventionnee %></td>
+  <td><%= service.un_locals_id %></td>
+
+  <% if current_user.role == 'directeur' %>
+
+      <td><%= link_to "modifier", edit_service_path(service) %></td>
+      <td><%= link_to "supprimer", service, method: :delete, data: { confirm: "Êtes-vous certain ?" } %></td>
+
+    <% else %>
+
+      <td></td>
+      <td></td>
+
+    <% end %>
+
+<% elsif current_page?(ajouter_retirer_service_un_local_path) %>
+
+    <td><%= service.id %></td>
+    <td><%= link_to service.nom, service %></td>
+    <td><%= service.description %></td>
+    <td><%= service.tarification_parent %> $</td>
+    <td><%= service.tarification_cisss %> $</td>
+    <td><%= service.est_actif %></td>
+    <td><%= service.est_subventionnee %></td>
+    <td><%= service.un_locals_id %></td>
+
+    <% if service.followed_by?(current_un_local) %>
+
+      <td><%= link_to "Retirer", {controller: 'un_locals', action: 'retirer', un_local_id: current_un_local.id, service_id: service.id} %></td>
+      <td></td>
+
+    <% else %>
+    
+        <td></td>
+        <td><%= link_to "Ajouter", {controller: 'un_locals', action: 'ajouter', un_local_id: current_un_local.id, service_id: service.id} %></td>
+
+    <% end %>
+
+<% elsif current_page?(un_local_path) %>
+
+  <% if service.followed_by?(current_un_local) %>
+
+    <td><%= service.id %></td>
+    <td><%= link_to service.nom, service %></td>
+    <td><%= service.description %></td>
+    <td><%= service.tarification_parent %> $</td>
+    <td><%= service.tarification_cisss %> $</td>
+    <td><%= service.est_actif %></td>
+    <td><%= service.est_subventionnee %></td>
+    <td><%= service.un_locals_id %></td>
+    <td></td>
+    <td></td>
+
+  <% end %>
+<% end %>
+</tr>

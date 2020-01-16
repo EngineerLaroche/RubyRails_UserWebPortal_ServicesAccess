@@ -1,0 +1,38 @@
+<% provide(:title, "Edit user") %>
+<h1>Modifier votre Compte</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+
+    <% if current_user.role == 'directeur' %>
+    <% if !current_user?(@user) %>
+        <%= f.label :role %>
+        <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>              
+      <% end %>
+  <% end %>
+
+  <% if current_user.role == 'coordonateur' %>
+      <% if !current_user?(@user) && user.role != 'directeur' %>
+          <%= f.label :role %>
+            <%= f.collection_select :role, User::ROLES2, :to_s, :humanize %>
+      <% end %>
+  <% end %>
+
+        <%= f.label 'Nom' %>
+        <%= f.text_field :name, class: 'form-control', placeholder: 'username' %>
+
+        <%= f.label 'Email' %>
+        <%= f.email_field :email, class: 'form-control', placeholder: 'exemple@email.com' %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control' %>
+
+        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+        <%= f.submit "Sauvegarder les changements", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

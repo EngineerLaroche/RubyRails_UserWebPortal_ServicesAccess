@@ -1,0 +1,12 @@
+
+<% provide(:title, 'ajouter_retirer_org_ref') %>
+<br/>
+<div class="row">
+  <aside class="col-md-3">
+<%= button_to "Retourner sur l'Organisme", @organisme , class: "btn btn-primary", method: :get %>
+</aside>
+</div>
+<br/>
+<%= link_to "Creer nouvel Organisme Referent", new_organisme_referent_path %>
+
+<%= render template: 'organisme_referents/index' %>

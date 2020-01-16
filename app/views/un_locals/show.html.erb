@@ -1,0 +1,66 @@
+<% provide(:title, @un_local.nom) %>
+
+<div class="row">
+  <h1>Page du Local</h1>
+  <aside class="col-md-12">
+    <section>
+      <br/>
+      <h1>
+      <font size="5">
+          <strong>ID du local : <a><%= @un_local.id %></a></strong>
+        </font>
+      </h1>
+      <h1>
+        <font size="6">
+          <strong>Nom : <a><%= @un_local.nom %></a></strong>
+        </font>
+        <br/>
+        <% if current_user.role == 'directeur' %>
+            </h1><%= link_to "Modifier local", edit_un_local_path(@un_local) %><h1>
+        <% end %>
+        <br/>
+        <font size="5">    
+          <strong>Disponible : <a> <%= @un_local.est_disponible %> </a></strong>
+          <br/>
+          <strong>Nombre de places : <a><%= @un_local.qte_places %></a></strong>
+        </font>
+      </h1>
+      <br/>
+      <br/>
+      <hr>
+      <hr>
+      <h1>
+        <font size="5">
+          <strong> Les Services du Local ( <%= @vosservices %> )</strong>
+        </font>
+      </h1>
+      <br/>
+      <div class="row">
+        <aside class="col-md-4">
+          <%= button_to "Ajouter ou Retirer un Service", ajouter_retirer_service_un_local_path(@un_local) , class: "btn btn-primary", method: :get %>
+        </aside>
+        </div>
+      <%= render template: 'services/index' %>
+      <br/>
+      <hr>
+      <h1>
+        <font size="5">   
+         <strong>Appartient au Point de Service</strong>
+        </font>
+      </h1>
+      <%= render template: 'point_of_services/index' %>
+      <hr>
+      <br/>
+      <h1>
+        <font size="5">
+          <strong> Notifications</strong>
+        </font>
+      </h1>
+      <br/>
+      <font size="2">
+        <h1>Ouvert depuis : <a> <%= @un_local.created_at %> </a></h1>
+        <h1>Derniere Mise a Jour : <a> <%= @un_local.updated_at %> </a></h1>
+      </font>
+    </section>
+  </aside>
+</div>

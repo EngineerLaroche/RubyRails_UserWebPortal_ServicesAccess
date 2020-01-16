@@ -1,0 +1,24 @@
+<% provide(:title, 'Edit un_local') %>
+<h1>Modifier Local</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@un_local) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :est_disponible %>
+      <%= f.select :est_disponible, [['Libre', true], ['Occuper', false]] %>
+
+      <%= f.label :nom %>
+      <%= f.text_field :nom, class: 'form-control' %>
+
+      <%= f.label :qte_places %>
+      <%= f.number_field :qte_places, class: 'form-control' %>
+
+      <%= f.label "Si vous connaissez l'ID du point de service" %>
+      <%= f.number_field :point_of_services_id, class: 'form-control' %>
+
+      <%= f.submit "Sauvegarder les changements", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

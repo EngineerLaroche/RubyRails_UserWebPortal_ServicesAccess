@@ -1,0 +1,64 @@
+<tr>
+<% if current_page?(organismes_path) %>
+
+  <td><%= organisme.id %></td>
+  <td><%= link_to organisme.nom, organisme %></td>
+  <td><%= organisme.tel %></td>
+  <td><%= organisme.email %></td>
+  <td><%= organisme.no_civique %> <%= organisme.rue %>, <%= organisme.ville %>, <%= organisme.province %></td>
+  <td><%= organisme.est_actif %></td>
+
+  <% if current_user.role == 'directeur' %>
+
+      <td><%= link_to "modifier", edit_organisme_path(organisme) %></td>
+      <td><%= link_to "supprimer", organisme, method: :delete, data: { confirm: "Êtes-vous certain ?" } %></td>
+  <% else %>
+
+      <td></td>
+      <td></td>
+  
+  <% end %>    
+
+<% elsif current_page?(organisme_referent_path) %>
+  <% if current_organisme_referent.followed_by?(organisme) %>
+
+      <td><%= organisme.id %></td>
+      <td><%= link_to organisme.nom, organisme %></td>
+      <td><%= organisme.tel %></td>
+      <td><%= organisme.email %></td>
+      <td><%= organisme.no_civique %> <%= organisme.rue %>, <%= organisme.ville %></td>
+      <td><%= organisme.est_actif %></td>
+      <td></td>
+      <td></td>
+      
+    <% end %>
+
+<% elsif current_page?(referent_path) %>
+  <% if current_referent.followed_by?(organisme) %>
+
+      <td><%= organisme.id %></td>
+      <td><%= link_to organisme.nom, organisme %></td>
+      <td><%= organisme.tel %></td>
+      <td><%= organisme.email %></td>
+      <td><%= organisme.no_civique %> <%= organisme.rue %>, <%= organisme.ville %></td>
+      <td><%= organisme.est_actif %></td>
+      <td></td>
+      <td></td>
+      
+    <% end %> 
+
+<% elsif current_page?(point_of_service_path) %>
+  <% if current_point_of_service.followed_by?(organisme) %>
+
+      <td><%= organisme.id %></td>
+      <td><%= link_to organisme.nom, organisme %></td>
+      <td><%= organisme.tel %></td>
+      <td><%= organisme.email %></td>
+      <td><%= organisme.no_civique %> <%= organisme.rue %>, <%= organisme.ville %></td>
+      <td><%= organisme.est_actif %></td>
+      <td></td>
+      <td></td>
+      
+    <% end %>        
+<% end %>
+</tr>

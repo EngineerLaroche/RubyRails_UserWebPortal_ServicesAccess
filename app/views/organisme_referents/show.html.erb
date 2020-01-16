@@ -1,0 +1,99 @@
+<% provide(:title, @organisme_referent.nom) %>
+
+<div class="row">
+  <h1>Compte Organisme Referent</h1>
+  <aside class="col-md-12">
+    <section>
+      <br/>
+      <font size="5">
+          <strong>ID organisme referent : <a><%= @organisme_referent.id %></a></strong>
+        </font>
+      </h1>
+      <br/>
+      <h1>
+        <font size="6">
+          <strong> Nom : <a><%= @organisme_referent.nom %></a></strong>
+        </font>
+      </h1>
+      <% if current_user.role == 'directeur' || current_user.role == 'coordonateur' %>
+          <li><%= link_to "Modifier Organisme Référent", edit_organisme_referent_path(@organisme_referent) %></li>
+      <% end %>
+      <br/>
+      <h1>
+        <font size="5">
+          <strong> Est actif : <a><%= @organisme_referent.est_actif %></a></strong>
+          <br/>
+          <strong>Email : <a><%= @organisme_referent.email %></a></strong>
+          <br/>
+          <strong>Site web : <a><%= @organisme_referent.website %></a></strong>
+        </font>
+      </h1>
+      <br/>
+      <br/>
+      <hr>
+      <hr>
+    <div id="main-container" class="container">
+      <div id="Contact" class="col-md-6">
+        <h1>
+        <font size="5">
+          <strong>Contact</strong>
+        </font>
+      </h1>
+      <br/>
+      <font size="2">
+        <h1>Telephone : <a><%= @organisme_referent.tel %></a></h1>
+        <h1>Fax : <a><%= @organisme_referent.fax %></a></h1>
+      </font>
+      </div>
+      <div id="Adresse" class="col-md-6">
+      <h1>
+        <font size="5">
+          <strong>Adresse</strong>
+        </font>
+      </h1>
+      <br/>
+      <font size="2">
+        <h1>Num. : <a> <%= @organisme_referent.no_civique %> </a></h1>
+        <h1>Rue : <a> <%= @organisme_referent.rue %> </a></h1>
+        <h1>Ville : <a> <%= @organisme_referent.ville %> </a></h1>
+        <h1>Province : <a> <%= @organisme_referent.province %> </a></h1>
+        <h1>Code postal : <a> <%= @organisme_referent.code_postal %> </a></h1>
+      </font>
+    </div>
+  </div>
+  <br/>
+    <hr>
+      <font size="5">
+        <strong>Vos Referents ( <%= @vosreferents %> )</strong>
+      </font>
+      </h1>
+    <br/>
+      <br/>
+      <div class="row">
+        <aside class="col-md-3">
+          <%= button_to "Ajouter ou Retirer un Referent", ajouter_retirer_ref_organisme_referent_path(@organisme_referent) , class: "btn btn-primary", method: :get %>
+        </aside>
+        </div>
+        <br/>
+      <%= render template: 'referents/index' %>
+      <br/>
+      <hr>
+      <font size="5">
+         <strong>Appartient a l'Organisme </strong>
+       </font>
+      </h1>  
+      <%= render template: 'organismes/index' %>
+      <br/>
+      <hr>
+      <font size="5">
+         <strong>Notifications</strong>
+       </font>
+      <br/>
+      <br/>
+      <font size="2">
+        <h1>Actif depuis : <a><%= @organisme_referent.created_at %></a></h1>
+        <h1>Derniere Mise a Jour : <a><%= @organisme_referent.updated_at %></a></h1>
+      </font>
+    </section>
+  </aside>
+</div>

@@ -1,0 +1,39 @@
+<% provide(:title, 'Tous les Services') %>
+<div class="container">
+
+  <% if current_page?(services_path) %>
+
+    <h1>Tous les Services</h1>
+
+    <%= form_tag(services_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Nom ou Description" %>
+      <%= submit_tag "Recherche", class: "btn btn-primary", :email => nil %>
+    <% end %>
+  <% end %>
+  <br/>
+  <br/>
+  <table class="table table-striped">
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Description</th>
+      <th>Tarif parent</th>
+      <th>Tarif CISSS</th>
+      <th>Actif</th>
+      <th>Subvention</th>
+      <th>ID Local</th>
+      <th></th>
+      <th></th>
+
+      <% if current_page?(services_path) %>
+        <% if @services.present? %>
+          <%= render @services %>
+        <% else %>
+          <p>Il n'y a pas de services contenant l'information : <%= params[:search] %>.</p>
+        <% end %>
+      <% else %>
+        <%= render @services %>
+      <% end %>
+    </tr>
+  </table>
+</div>

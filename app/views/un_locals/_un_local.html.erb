@@ -1,0 +1,69 @@
+<tr>
+<% if current_page?(un_locals_path) %>
+
+  <td><%= un_local.id %></td>
+  <td><%= link_to un_local.nom, un_local %></td>
+  <td><%= un_local.est_disponible %></td>
+  <td><%= un_local.qte_places %></td>
+  <td><%= un_local.point_of_services_id %></td>
+
+  <% if current_user.role == 'directeur' %>
+
+      <td><%= link_to "modifier", edit_un_local_path(un_local) %></td>
+      <td><%= link_to "supprimer", un_local, method: :delete, data: { confirm: "Êtes-vous certain ?" } %></td>
+  <% else %>
+
+      <td></td>
+      <td></td>
+
+  <% end %>
+
+<% elsif current_page?(ajouter_retirer_local_point_of_service_path) %>
+
+    <td><%= un_local.id %></td>
+    <td><%= link_to un_local.nom, un_local %></td>
+    <td><%= un_local.est_disponible %></td>
+    <td><%= un_local.qte_places %></td>
+    <td><%= un_local.point_of_services_id %></td>
+
+    <% if un_local.followed_by?(current_point_of_service) %>
+
+        <td><%= link_to "Retirer", {controller: 'point_of_services', action: 'retirer', point_of_service_id: current_point_of_service.id, un_local_id: un_local.id} %></td>
+        <td></td>
+
+    <% else %>
+
+        <td></td>
+        <td><%= link_to "Ajouter", {controller: 'point_of_services', action: 'ajouter', point_of_service_id: current_point_of_service.id, un_local_id: un_local.id} %></td>
+   
+    <% end %>
+
+<% elsif current_page?(point_of_service_path) %>
+
+  <% if un_local.followed_by?(current_point_of_service) %>    
+
+      <td><%= un_local.id %></td>
+      <td><%= link_to un_local.nom, un_local %></td>
+      <td><%= un_local.est_disponible %></td>
+      <td><%= un_local.qte_places %></td>
+      <td><%= un_local.point_of_services_id %></td>
+      <td></td>
+      <td></td>
+
+    <% end %>
+
+<% elsif current_page?(service_path) %>
+
+  <% if current_service.followed_by?(un_local) %>    
+
+      <td><%= un_local.id %></td>
+      <td><%= link_to un_local.nom, un_local %></td>
+      <td><%= un_local.est_disponible %></td>
+      <td><%= un_local.qte_places %></td>
+      <td><%= un_local.point_of_services_id %></td>
+      <td></td>
+      <td></td>
+
+    <% end %>    
+  <% end %>
+</tr>

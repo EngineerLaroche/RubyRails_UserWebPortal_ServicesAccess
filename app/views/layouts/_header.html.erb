@@ -1,0 +1,80 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <% if logged_in? %>
+      <%= link_to "Barre d'Accès Rapide", root_path, id: "logo" %>
+    <% else %>
+      <%= link_to "portail web", root_path, id: "logo" %>
+    <% end %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <% if logged_in? %>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Afficher <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+
+              <% if current_user.role == 'directeur' %>
+                <li><%= link_to "Liste Locaux", un_locals_path %></li>
+                <li><%= link_to "Liste Services", services_path %></li>
+                <li><%= link_to "Liste Points de services", point_of_services_path %></li>
+              <% end %>
+
+              <li class="divider"></li>
+
+              <li><%= link_to "Liste Referents", referents_path %></li>
+
+              <% if current_user.role == 'coordonateur' || current_user.role == 'directeur' %>
+                <% if current_user.role == 'directeur' %>
+                  <li><%= link_to "Liste Organismes", organismes_path %></li>
+                <% end %>
+
+                <li><%= link_to "Liste Organismes Referents", organisme_referents_path %></li>
+              <% end %>
+
+              <li class="divider"></li>
+
+              <li><%= link_to "Liste Usagers", users_path %></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Créer <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+
+              <% if current_user.role == 'directeur' %>
+                <li><%= link_to "Nouveau Local", creerunlocal_path %></li>
+                <li><%= link_to "Nouveau Service", creerservice_path %></li>
+                <li><%= link_to "Nouveau Point de service", creerpointofservice_path %></li>
+              <% end %>
+
+              <li class="divider"></li>
+
+              <li><%= link_to "Nouveau Referent", creerreferent_path %></li>
+
+              <% if current_user.role == 'coordonateur' || current_user.role == 'directeur' %>
+                <% if current_user.role == 'directeur' %>
+                  <li><%= link_to "Nouvel Organisme", creerorganisme_path %></li>
+                        <li><%= link_to "Nouveau point de service", creerpointofservice_path %></li>
+                <% end %>
+
+                <li><%= link_to "Nouvel Organisme Referent", creerorganismereferent_path %></li>
+
+                <li class="divider"></li>
+                <li><%= link_to "Nouvel Usager", signup_path %></li>
+              <% end %>
+            </ul>
+          </li>
+          <li><%= link_to " | Votre Compte", root_path %></li>
+          <li><%= link_to "Déconnexion  | ", logout_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Acceuil", root_path %></li>
+          <li><%= link_to "Plan du site", about_path %></li>
+          <li><%= link_to "Connexion", login_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,97 @@
+<% provide(:title, @point_of_service.nom) %>
+
+<div class="row">
+  <h1>Points de services</h1>
+  <aside class="col-md-12">
+    <section>
+      <br/>
+      <h1>
+        <font size="5">
+          <strong>ID Point de Service : <a><%= @point_of_service.id %></a></strong>
+        </font>
+      </h1>
+      <h1>
+        <font size="6">
+          <strong> Nom : <a><%= @point_of_service.nom %></a></strong>
+        </font>
+      </h1>
+      <h1>
+        <font size="5">
+          <strong>email : <a><%= @point_of_service.email %></a></strong>
+        </font>
+      </h1>
+      <% if current_user.role == 'directeur' %>
+        <li><%= link_to "Modifier point de service", edit_point_of_service_path(@point_of_service) %></li>
+      <% end %>
+      <br/>
+      <br/>
+      <hr>
+    <hr>
+    <div id="main-container" class="container">
+      <div id="Contact" class="col-md-6">
+      <h1>
+        <font size="5">
+          <strong>Contact</strong>
+        </font>
+      </h1>
+      <br/>
+      <font size="2">
+        <h1>Telephone : <a><%= @point_of_service.tel %></a></h1>
+        <h1>Fax : <a><%= @point_of_service.fax %></a></h1>
+      </font>
+      </div>
+
+      <div id="Adresse" class="col-md-6">
+      <h1>
+        <font size="5">
+          <strong>Adresse</strong>
+        </font>
+      </h1>
+      <br/>
+      <font size="2">
+        <h1>Num. : <a> <%= @point_of_service.no_civique %> </a></h1>
+        <h1>Rue : <a> <%= @point_of_service.rue %> </a></h1>
+        <h1>Ville : <a> <%= @point_of_service.ville %> </a></h1>
+        <h1>Province : <a> <%= @point_of_service.province %> </a></h1>
+        <h1>Code postal : <a> <%= @point_of_service.code_postal %> </a></h1>
+      </font>
+    </div>
+  </div>
+      <hr>
+      <h1>
+        <font size="5">
+          <strong>
+          Vos Locaux ( <%= @voslocaux %> )
+        </strong>
+        </font>
+      </h1>
+      <br/>
+      <div class="row">
+        <aside class="col-md-3">
+          <%= button_to "Ajouter ou Retirer un Local", ajouter_retirer_local_point_of_service_path(@point_of_service) , class: "btn btn-primary", method: :get %>
+        </aside>
+        </div>
+      <%= render template: 'un_locals/index' %>
+      <br/>
+      <hr>
+      <h1>
+        <font size="5">
+         <strong>Appartient a l'Organisme : </strong> 
+        </font> 
+      </h1>
+      <%= render template: 'organismes/index' %>
+      <br/>
+      <hr>
+      <h1>
+        <font size="5">
+          <strong>Notifications</strong>
+        </font>
+      </h1>
+      <br/>
+      <font size="2">
+        <h1>Actif depuis : <a> <%= @point_of_service.created_at %> </a></h1>
+        <h1>Derniere Mise a Jour : <a> <%= @point_of_service.updated_at %> </a></h1>
+      </font>
+    </section>
+  </aside>
+</div>

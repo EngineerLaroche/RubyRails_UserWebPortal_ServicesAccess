@@ -1,0 +1,38 @@
+<% provide(:title, 'Tous Organisme Referents') %>
+<div class="container">
+
+  <% if current_page?(organisme_referents_path) %>
+
+    <h1>Tous les Organismes Referents</h1>
+
+  <%= form_tag(organisme_referents_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Nom ou Email" %>
+    <%= submit_tag "Recherche", class: "btn btn-primary", :email => nil %>
+  <% end %>
+<% end %>
+  <br/>
+  <br/>
+  <table class="table table-striped">
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Telephone</th>
+      <th>Email</th>
+      <th>Site Web</th>
+      <th>Actif</th>
+      <th>ID Org.</th>
+      <th></th>
+      <th></th>
+
+    <% if current_page?(organisme_referents_path) %>
+      <% if @organisme_referents.present? %>
+          <%= render @organisme_referents %>
+      <% else %>
+        <p>Il n'y a pas d'Organisme Referents contenant l'information : <%= params[:search] %>.</p>
+      <% end %>
+    <% else %>
+        <%= render @organisme_referents %>
+    <% end %>
+    </tr>
+  </table>
+</div>

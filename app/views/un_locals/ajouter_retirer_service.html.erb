@@ -1,0 +1,12 @@
+
+<% provide(:title, 'ajouter_retirer_service') %>
+<br/>
+ <div class="row">
+    <aside class="col-md-4">
+        <%= button_to "Retourner sur le Local", @un_local , class: "btn btn-primary", method: :get %>
+    </aside>
+ </div>
+<br/>
+<%= link_to "Creer nouveau Service", new_service_path %>
+
+<%= render template: 'services/index' %>

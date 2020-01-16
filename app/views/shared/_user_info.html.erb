@@ -1,0 +1,24 @@
+<h1>
+  <font size="5">
+    <strong>ID User : <a><%= current_user.id %></a></strong>
+  </font>
+</h1>
+<h1>
+  <font size="6">
+    <strong>Username : <a><%= current_user.name %></a></strong>
+  </font>
+</h1>
+<li>
+  <%= link_to "Modifier votre compte", edit_user_path(current_user) %>
+</li>
+<br/>
+<h1>
+  <font size="5">
+    <strong>Titre : <a><%= current_user.role %></a></strong>
+    <br/>
+    <strong>Email : <a><%= current_user.email %></a></strong>
+  </font>
+</h1>
+<font size="2">
+    <h1>Actif depuis : <a><%= current_user.created_at %></a></h1>
+</font>

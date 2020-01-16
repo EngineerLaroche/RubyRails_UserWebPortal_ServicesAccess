@@ -1,0 +1,34 @@
+<% provide(:title, 'Sign up') %>
+<h1>Créer nouvel usager</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+
+        <% if current_user.role == 'directeur' %>
+          <%= f.label "Role de l'Usager" %>
+          <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
+        <% end %>
+
+        <% if current_user.role == 'coordonateur' %>
+            <%= f.label "Role de l'Usager" %>
+            <%= f.collection_select :role, User::ROLES2, :to_s, :humanize %>
+        <% end %>
+
+        <%= f.label 'Nom' %>
+        <%= f.text_field :name, class: 'form-control', placeholder: 'username' %>
+
+        <%= f.label 'Email' %>
+        <%= f.email_field :email, class: 'form-control', placeholder: 'exemple@email.com' %>
+
+        <%= f.label 'Mot de passe' %>
+        <%= f.password_field :password, class: 'form-control' %>
+
+        <%= f.label 'Confirmer Mot de passe' %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+        <%= f.submit "Créer usager", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

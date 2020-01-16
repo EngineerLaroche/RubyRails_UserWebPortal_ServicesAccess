@@ -1,0 +1,74 @@
+<tr>
+<% if current_page?(point_of_services_path) %>
+
+  <td><%= point_of_service.id %></td>
+  <td><%= link_to point_of_service.nom, point_of_service %></td>
+  <td><%= point_of_service.tel %></td>
+  <td><%= point_of_service.email %></td>
+  <td><%= point_of_service.no_civique %> <%= point_of_service.rue %>, <%= point_of_service.ville %></td>
+  <td><%= point_of_service.organismes_id %></td>
+
+  <% if current_user.role == 'directeur' %>
+
+      <td><%= link_to "modifier", edit_point_of_service_path(point_of_service) %></td>
+      <td><%= link_to "supprimer", point_of_service, method: :delete, data: { confirm: "Êtes-vous certain ?" } %></td>    
+
+    <% else %>
+
+        <td></td>
+        <td></td>
+
+    <% end %>
+
+<% elsif current_page?(ajouter_retirer_point_service_organisme_path) %>   
+
+      <td><%= point_of_service.id %></td>
+      <td><%= link_to point_of_service.nom, point_of_service %></td>
+      <td><%= point_of_service.tel %></td>
+      <td><%= point_of_service.email %></td>
+      <td><%= point_of_service.no_civique %> <%= point_of_service.rue %>, <%= point_of_service.ville %></td>
+      <td><%= point_of_service.organismes_id %></td>
+
+      <% if point_of_service.followed_by?(current_organisme) %>
+
+        <td><%= link_to "Retirer", {controller: 'organismes', action: 'retirer', organisme_id: current_organisme.id, point_of_service_id: point_of_service.id} %></td>
+        <td></td>
+
+      <% else %>
+
+        <td></td>
+        <td><%= link_to "Ajouter", {controller: 'organismes', action: 'ajouter', organisme_id: current_organisme.id, point_of_service_id: point_of_service.id} %></td>
+
+      <% end %>
+
+<% elsif current_page?(organisme_path) %>
+
+  <% if point_of_service.followed_by?(current_organisme) %>   
+
+      <td><%= point_of_service.id %></td>
+      <td><%= link_to point_of_service.nom, point_of_service %></td>
+      <td><%= point_of_service.tel %></td>
+      <td><%= point_of_service.email %></td>
+      <td><%= point_of_service.no_civique %> <%= point_of_service.rue %>, <%= point_of_service.ville %></td>
+      <td><%= point_of_service.organismes_id %></td>
+      <td></td>
+      <td></td>
+    
+  <% end %>
+
+<% elsif current_page?(un_local_path) %>
+
+  <% if current_un_local.followed_by?(point_of_service) %>   
+
+      <td><%= point_of_service.id %></td>
+      <td><%= link_to point_of_service.nom, point_of_service %></td>
+      <td><%= point_of_service.tel %></td>
+      <td><%= point_of_service.email %></td>
+      <td><%= point_of_service.no_civique %> <%= point_of_service.rue %>, <%= point_of_service.ville %></td>
+      <td><%= point_of_service.organismes_id %></td>
+      <td></td>
+      <td></td>
+    
+  <% end %>
+<% end %>
+</tr>

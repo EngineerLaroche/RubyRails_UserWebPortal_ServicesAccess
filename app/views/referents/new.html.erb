@@ -1,0 +1,58 @@
+<% provide(:title, 'creerreferent') %>
+<h1>Créer un nouveau referent</h1>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= form_for(@referent) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <div id="main-container" class="container">
+        <div id="Info Referent" class="col-md-6">
+
+        <h1><a>Information</a></h1>
+
+        <%= f.label :prenom %>
+        <%= f.text_field :prenom, class: 'form-control', placeholder: 'prenom' %>
+
+        <%= f.label :nom %>
+        <%= f.text_field :nom, class: 'form-control', placeholder: 'nom' %>
+
+        <%= f.label :titre %>
+        <%= f.text_field :titre, class: 'form-control', placeholder: 'titre' %>
+
+    </div>
+    <div id="Contact Referent" class="col-md-6">
+
+        <h1><a>Contact</a></h1>
+
+        <%= f.label 'Téléphone de Bureau' %>
+        <%= f.text_field :tel_bureau, class: 'form-control', placeholder: 'xxx-xxx-xxxx' %>
+
+        <%= f.label 'Téléphone Cellulaire' %>
+        <%= f.text_field :tel_cell, class: 'form-control', placeholder: 'xxx-xxx-xxxx' %>
+
+        <%= f.label :fax %>
+        <%= f.telephone_field :fax, class: 'form-control', placeholder: 'xxx-xxx-xxxx' %>
+
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'form-control', placeholder: 'exemple@email.com' %>
+    </div>
+</div>
+    <div id="Preference Referent" class="col-md-6 col-md-offset-3">
+    <h1><a>Preferences</a></h1>
+
+    <%= f.label 'Réception rapport no 1' %>
+    <%= f.collection_select :pref_rapport_1, Referent::RAPPORT_E_F_P, :to_s, :humanize %>
+
+    <%= f.label 'Réception rapport no 2' %>
+    <%= f.collection_select :pref_rapport_2, Referent::RAPPORT_E_F_P, :to_s, :humanize %>
+
+    <%= f.label 'Réception rapport no 3' %>
+    <%= f.collection_select :pref_rapport_3, Referent::RAPPORT_E_F_P, :to_s, :humanize %>
+    <br/>
+    <br/>
+    </div>
+    <%= f.submit "Créer referent", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
