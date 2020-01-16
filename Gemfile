@@ -35,6 +35,7 @@ gem 'heroku', '3.41.5'
 gem 'language-converter'
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem 'attr_encrypted'
+gem 'net-ssh-gateway',         '2.0.0'
 
 
 #**************************************************************
