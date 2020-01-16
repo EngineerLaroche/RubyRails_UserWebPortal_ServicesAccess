@@ -30,7 +30,7 @@ gem 'rack-timeout',            '0.4.2'
 gem 'rails_12factor',          '0.0.3'
 
 gem 'audited'
-gem 'heroku'
+gem 'heroku', '3.41.5'
 gem 'language-converter'
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem 'attr_encrypted'

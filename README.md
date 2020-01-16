@@ -1,12 +1,16 @@
 # Ruby on Rails - Employee's Web Portal
 
 ##Installer les dépendances
-...
+
+
 
 ##En cas de problème
 
 $ spring stop
+ou
 $ sudo bundle install
+ou
+$ bundle update
 
 ##Les accès du portail
 
