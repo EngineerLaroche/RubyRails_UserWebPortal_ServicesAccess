@@ -56,7 +56,9 @@ Ruby on Rails, BoosStrap, HTML 5, CSS 3, CloudFlare, Bundler, Ubuntu 18, etc.
 
 	$ rails server
 
-6- Ouvrir un navigateur web et entrer l'URL: ___ 0.0.0.0:3000
+6- Ouvrir un navigateur web et entrer l'URL:
+
+	0.0.0.0:3000
 
 
 # CONNEXION PORTAIL WEB
@@ -83,11 +85,17 @@ Role:		intervenant
 La console Rails permet de verifier certaines informations sans devoir passer par un UI.
 
 
-Démarrer console:		$ rails console <br/>
-Quitter console:		ctrl + d
+Démarrer console:		
 
-Demarrer console test:	$ rails console --sandbox <br/>
-Quitter console test:	ctrl + d
+	$ rails console
+
+Demarrer console test:	
+
+	$ rails console --sandbox
+
+Quitter console:
+
+	ctrl + d
 
 
 Trouver usager:
