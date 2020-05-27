@@ -11,7 +11,7 @@
             <strong>Titre : <a><%= current_user.role %></a></strong>
           </font>
         </h1>
-        <li><%= link_to "Modifier votre compte", edit_user_path(current_user) %></li>
+        <%= link_to "Modifier votre compte", edit_user_path(current_user) %>
       </div>
       <div id="Nom" class="column">
       <div style="border-left:1px solid #000;height:70px"></div>
@@ -31,10 +31,9 @@
 
 <hr>
 <br/>
-
 <%= render template: 'users/index' %>
-
 <hr>
+
 <div id="Nom" class="column">
   <h1>
     <font size="5">
