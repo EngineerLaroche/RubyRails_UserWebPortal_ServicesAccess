@@ -2,15 +2,17 @@
 <div class="container">
   <% if current_page?(organismes_path) %>
 
-    <h1>Tous les Organismes</h1> 
-
+    <h1>Repertoire des Organismes</h1>
+    <hr>
+    <hr>
+    <br/>
     <%= form_tag(organismes_path, :method => "get", id: "search-form") do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Nom ou Email" %>
-      <%= submit_tag "Recherche", class: "btn btn-primary", :email => nil %>
+        <%= text_field_tag :search, params[:search], placeholder: "Nom ou Email" %>
+        <%= submit_tag "Recherche", class: "btn btn-primary", :email => nil %>
     <% end %>
   <% end %>
   <br/>
-  <br/>
+
   <table class="table table-striped">
     <tr>
       <th>ID</th>
@@ -22,15 +24,15 @@
       <th></th>
       <th></th>
 
-    <% if current_page?(organisme_referents_path) %>
+      <% if current_page?(organisme_referents_path) %>
         <% if @organismes.present? %>
           <%= render @organismes %>
         <% else %>
           <p>Il n'y a pas d'Organisme contenant l'information : <%= params[:search] %>.</p>
         <% end %>
-    <% else %>
-      <%= render @organismes %>
-    <% end %>    
+      <% else %>
+        <%= render @organismes %>
+      <% end %>
     </tr>
   </table>
 </div>

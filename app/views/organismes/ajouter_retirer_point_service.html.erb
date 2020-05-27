@@ -2,11 +2,15 @@
 <% provide(:title, 'ajouter_retirer_point_service') %>
 <br/>
 <div class="row">
-  <aside class="col-md-3">
-	<%= button_to "Retourner sur l'Organisme", @organisme , class: "btn btn-primary", method: :get %>
+
+	<h1>Ajouter / Retirer un Point de Service</h1>
+	<hr>
+	<hr>
+
+  <aside class="columnbtn">
+	<%= button_to "Retourner vers l'Organisme", @organisme , class: "btn btn-primary", method: :get %>
 </aside>
 </div>
 <br/>
 <%= link_to "Creer nouveau Point de Service", new_point_of_service_path %>
-
 <%= render template: 'point_of_services/index' %>

@@ -1,17 +1,21 @@
 <% if logged_in? %>
     <div class="row">
       <h1> Votre Compte </h1>
+      <hr>
+      <hr>
+      <br/>
       <aside class="col-md-10">
         <section class="user_info">
           <%= render 'shared/user_info' %>
         </section>
+      </aside>
     </div>
 <% else %>
     <div class="center jumbotron">
       <h1>Portail web de la <a href="">RQRSDA</a></h1>
-      <h2>Ceci est une application dévelopée par des
-        <a href="https://etsmtl.ca">étudiants de l'ÉTS</a>
-        à Montréal.
+      <h2>Site dévelopé par
+        <a href="https://etsmtl.ca">Alexandre Laroche</a>
+        de l'ÉTS à Montréal.
       </h2>
     </div>
 <% end %>

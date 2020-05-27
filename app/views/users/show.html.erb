@@ -1,37 +1,42 @@
 <% provide(:title, @user.name) %>
 
-  <h1> Compte Usager </h1>
-  <aside class="col-md-10">
-    <section>
-    <br/>
-      <h1>
-        <font size="6">
-          <strong>Usager : <a><%= @user.name %></a></strong>
-        </font>
-      </h1>
-      <h1>
-        <font size="5">
-          <strong> Email : <a><%= @user.email %></a></strong>
-        </font>
-      </h1>
-      <% if current_user.role == 'directeur' || current_user.role == 'coordonateur' %>
-        <li>
-          <%= link_to "Modifier le compte", edit_user_path(@user.email) %>
-        </li>
-      <% end %>
-      <br/>
-      <h1>
-        <font size="5">
-          <strong> ID Usager : <a><%= @user.id %></a></strong>
-          <br/>
-          <strong> Role : <a><%= @user.role %></a></strong>
-          <br/>
-        </font>
-      </h1>
-
-      <font size="2">
-        <h1> Actif depuis : <a> <%= @user.created_at %> </a></h1>
+<h1> Compte Usager </h1>
+<hr>
+<hr>
+<aside class="col-md-10">
+  <section>
+    <h1>
+      <font size="6">
+        <strong>Usager : <a><%= @user.name %></a></strong>
       </font>
-  </section>   
-  </aside>
+    </h1>
+    <h1>
+      <font size="5">
+        <strong> Role : <a><%= @user.role %></a></strong>
+        <br/>
+      </font>
+    </h1>
+
+    <% if current_user.role == 'directeur' || current_user.role == 'coordonateur' %>
+      <li>
+        <%= link_to "Modifier le compte", edit_user_path(@user.email) %>
+      </li>
+    <% end %>
+    <br/>
+    <h1>
+      <font size="5">
+        <strong> ID Usager : <a><%= @user.id %></a></strong>
+      </font>
+    </h1>
+    <h1>
+      <font size="5">
+        <strong> Email : <a><%= @user.email %></a></strong>
+      </font>
+    </h1>
+    <font size="2">
+      <h1> Actif depuis : <a> <%= @user.created_at %> </a></h1>
+    </font>
+  </section>
+</aside>
 </div>
+

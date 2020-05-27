@@ -1,14 +1,15 @@
 <% provide(:title, 'creerorganisme') %>
-<h1>Créer un nouvel organisme </h1>
-
+<h1>Créer un nouvel Organisme </h1>
+<hr>
+<hr>
 <div class="row">
   <div class="col-md-12">
     <%= form_for(@organisme) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
 
         <div id="main-container" class="container">
-            <div id="Info Organisme" class="col-md-6">
 
+            <div id="Info Organisme" class="column2">
             <h1><a>Information</a></h1>
 
             <%= f.label :nom %>
@@ -24,7 +25,7 @@
             <%= f.email_field :email, class: 'form-control', placeholder: 'exemple@email.com' %>
 
         </div>
-        <div id="Adresse" class="col-md-6">
+        <div id="Adresse" class="column2">
 
             <h1><a>Adresse</a></h1>
 
@@ -44,9 +45,10 @@
             <%= f.text_field :code_postal, class: 'form-control', placeholder: 'A1B 2C3' %>
         </div>
     </div>
-
+      <br/>
+      <dev class="columnbtn">
         <%= f.submit "Créer organisme", class: "btn btn-primary" %>
-
+      </dev>
     <% end %>
   </div>
 </div>

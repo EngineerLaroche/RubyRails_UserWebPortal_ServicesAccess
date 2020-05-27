@@ -9,6 +9,9 @@
       </configuration>
     </facet>
   </component>
+  <component name="ModuleRunConfigurationManager">
+    <shared />
+  </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$/../../vendor/bundle/ruby/2.3.0/gems/railties-5.1.4/lib/rails/generators/rails/plugin/templates">
       <sourceFolder url="file://$MODULE_DIR$/../../vendor/bundle/ruby/2.3.0/gems/railties-5.1.4/lib/rails/generators/rails/plugin/templates/test" isTestSource="true" />

@@ -1,8 +1,9 @@
 <% provide(:title, "Edit user") %>
 <h1>Modifier votre Compte</h1>
-
+<hr>
+<hr>
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="columnlogin">
     <%= form_for(@user) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
 
@@ -29,7 +30,7 @@
         <%= f.label :password %>
         <%= f.password_field :password, class: 'form-control' %>
 
-        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.label :password_confirmation, "Confirmation password" %>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
 
         <%= f.submit "Sauvegarder les changements", class: "btn btn-primary" %>

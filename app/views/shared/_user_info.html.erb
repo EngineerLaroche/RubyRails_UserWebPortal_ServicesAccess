@@ -1,24 +1,50 @@
-<h1>
-  <font size="5">
-    <strong>ID User : <a><%= current_user.id %></a></strong>
-  </font>
-</h1>
-<h1>
-  <font size="6">
-    <strong>Username : <a><%= current_user.name %></a></strong>
-  </font>
-</h1>
-<li>
-  <%= link_to "Modifier votre compte", edit_user_path(current_user) %>
-</li>
+<div class="row">
+  <aside class="col-md-12">
+    <section>
+      <div id="Nom" class="column">
+        <h1>
+          <font size="6">
+            <strong>Username : <a><%= current_user.name %></a></strong>
+          </font>
+          <br/>
+          <font size="5">
+            <strong>Titre : <a><%= current_user.role %></a></strong>
+          </font>
+        </h1>
+        <li><%= link_to "Modifier votre compte", edit_user_path(current_user) %></li>
+      </div>
+      <div id="Nom" class="column">
+      <div style="border-left:1px solid #000;height:70px"></div>
+      </div>
+      <div id="Email" class="column">
+        <h1>
+          <font size="5">
+            ID User : <a><%= current_user.id %></a>
+            <br/>
+            <strong>Email : <a><%= current_user.email %></a></strong>
+          </font>
+        </h1>
+      </div>
+    </section>
+  </aside>
+</div>
+
+<hr>
 <br/>
-<h1>
-  <font size="5">
-    <strong>Titre : <a><%= current_user.role %></a></strong>
-    <br/>
-    <strong>Email : <a><%= current_user.email %></a></strong>
-  </font>
-</h1>
-<font size="2">
+
+<%= render template: 'users/index' %>
+
+<hr>
+<div id="Nom" class="column">
+  <h1>
+    <font size="5">
+      <strong>Activite</strong>
+    </font>
+  </h1>
+  <br/>
+  <font size="2">
     <h1>Actif depuis : <a><%= current_user.created_at %></a></h1>
-</font>
+    <h1>Derniere Mise a Jour : <a> <%= current_user.updated_at %> </a></h1>
+  </font>
+</div>
+

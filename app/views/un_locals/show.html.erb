@@ -1,33 +1,34 @@
 <% provide(:title, @un_local.nom) %>
 
 <div class="row">
-  <h1>Page du Local</h1>
+  <h1>Information du Local</h1>
+  <hr>
+  <hr>
   <aside class="col-md-12">
     <section>
       <br/>
-      <h1>
-      <font size="5">
-          <strong>ID du local : <a><%= @un_local.id %></a></strong>
-        </font>
-      </h1>
-      <h1>
-        <font size="6">
-          <strong>Nom : <a><%= @un_local.nom %></a></strong>
-        </font>
-        <br/>
-        <% if current_user.role == 'directeur' %>
-            </h1><%= link_to "Modifier local", edit_un_local_path(@un_local) %><h1>
-        <% end %>
-        <br/>
-        <font size="5">    
-          <strong>Disponible : <a> <%= @un_local.est_disponible %> </a></strong>
+      <div class="column2">
+        <h1>
+          <font size="6">
+            <strong>Nom : <a><%= @un_local.nom %></a></strong>
+          </font>
           <br/>
-          <strong>Nombre de places : <a><%= @un_local.qte_places %></a></strong>
-        </font>
+          <font size="5">
+            <strong>ID du local : <a><%= @un_local.id %></a></strong>
+          </font>
+        </h1>
+        <% if current_user.role == 'directeur' %>
+          </h1><%= link_to "Modifier local", edit_un_local_path(@un_local) %><h1>
+        <% end %>
+      </div>
+      <font size="5">
+        <strong>Disponible : <a> <%= @un_local.est_disponible %> </a></strong>
+        <br/>
+        <strong>Nombre de places : <a><%= @un_local.qte_places %></a></strong>
+      </font>
       </h1>
       <br/>
       <br/>
-      <hr>
       <hr>
       <h1>
         <font size="5">
@@ -36,16 +37,15 @@
       </h1>
       <br/>
       <div class="row">
-        <aside class="col-md-4">
-          <%= button_to "Ajouter ou Retirer un Service", ajouter_retirer_service_un_local_path(@un_local) , class: "btn btn-primary", method: :get %>
-        </aside>
+        <div class="column">
+          <%= button_to "Ajouter ou Retirer un Service", ajouter_retirer_service_un_local_path(@un_local), class: "btn btn-primary", method: :get %>
         </div>
+      </div>
       <%= render template: 'services/index' %>
-      <br/>
       <hr>
       <h1>
-        <font size="5">   
-         <strong>Appartient au Point de Service</strong>
+        <font size="5">
+          <strong>Appartient au Point de Service</strong>
         </font>
       </h1>
       <%= render template: 'point_of_services/index' %>
@@ -53,7 +53,7 @@
       <br/>
       <h1>
         <font size="5">
-          <strong> Notifications</strong>
+          <strong>Activite</strong>
         </font>
       </h1>
       <br/>

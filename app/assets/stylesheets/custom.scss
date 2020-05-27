@@ -300,3 +300,46 @@ span.picture {
     border: 0;
   }
 }
+
+
+.column {
+  float: left;
+  padding:0 15px;
+}
+
+.column2 {
+  float: left;
+  padding:0 15px;
+  width: 50%;
+}
+
+.columnbtn {
+  float: left;
+  padding:0 15px;
+  column-width: 300px;
+}
+
+.columnbtn2 {
+  float: left;
+  column-width: 300px;
+}
+
+
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.columnlogin {
+  //text-align: center;
+  //float: left;
+  //padding:0 15px;
+  //column-width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 45%;
+}
