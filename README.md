@@ -1,15 +1,15 @@
 
 # INFORMATION
 
-Institution:    Ecole de Technologie Superieure (ETS)
-Created by:		Alexandre Laroche
-Date:			11 april 2018
+Institution:    Ecole de Technologie Superieure (ETS) <br/>
+Created by:		Alexandre Laroche <br/>
+Date:			11 april 2018 <br/>
 
 
 # OBJECTIFS & FONCTIONNALITES
 
-PORTAIL WEB qui permet de regrouper les Ressources de supervision de droits d’accès du Québec (RSDA).
-Favoriser la concertation, l’échange et la collaboration entre les membres et les différents partenaires.
+PORTAIL WEB qui permet de regrouper les Ressources de supervision de droits d’accès du Québec (RSDA). <br/>
+Favoriser la concertation, l’échange et la collaboration entre les membres et les différents partenaires. <br/><br/>
 
 Portail web permet de gerer (afficher, creer, modifier, lier, supprimer, etc);
 
@@ -56,25 +56,25 @@ Ruby on Rails, BoosStrap, HTML 5, CSS 3, CloudFlare, Bundler, Ubuntu 18, etc.
 
 	$ rails server
 
-6- Ouvrir un navigateur web et entrer l'URL:  0.0.0.0:3000
+6- Ouvrir un navigateur web et entrer l'URL: ___ 0.0.0.0:3000
 
 
 # CONNEXION PORTAIL WEB
 
 ### User 1
 
-Email:		admin@outlook.com
+Email:		admin@outlook.com <br/>
 Password:	welcome
 
-Username:	Alexandre
+Username:	Alexandre <br/>
 Role:		directeur
 
 ### User 2
 
-Email:		evelyne@outlook.com
+Email:		evelyne@outlook.com <br/>
 Password:	welcome
 
-Username:	Evelyne
+Username:	Evelyne <br/>
 Role:		intervenant
 
 
@@ -83,10 +83,10 @@ Role:		intervenant
 La console Rails permet de verifier certaines informations sans devoir passer par un UI.
 
 
-Démarrer console:		$ rails console
+Démarrer console:		$ rails console <br/>
 Quitter console:		ctrl + d
 
-Demarrer console test:	$ rails console --sandbox
+Demarrer console test:	$ rails console --sandbox <br/>
 Quitter console test:	ctrl + d
 
 
@@ -200,7 +200,7 @@ Ajouter un Fichier dans la DB:
 
 Installer Ruby on Rails: https://www.howtoforge.com/tutorial/ubuntu-ruby-on-rails/
 
-Creation usager: http://railstutorial.org
+Creation usager: http://railstutorial.org _____
                  http://www.railstutorial.org/book
 
 Recherche: http://www.korenlc.com/creating-a-simple-search-in-rails-4/
@@ -210,5 +210,5 @@ Historique Tarification: https://github.com/collectiveidea/audited
 
 # LICENCE
 
-Copyright 2018 Alexandre Laroche. 
+Copyright 2018 Alexandre Laroche. <br/>
 All rights reserved.
