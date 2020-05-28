@@ -1,51 +1,48 @@
 <% provide(:title, "Modifier service") %>
 <h1>Modifier le Service</h1>
-
+<hr>
+<hr>
 <div class="row">
-  <div class="col-md-12">
+  <div class="column">
     <%= form_for(@service) do |f| %>
 
       <%= render 'shared/error_messages', object: f.object %>
 
-      <div id="main-container" class="container">
-        <div id="Info Service" class="col-md-6">
+      <div class="column2">
+        <h1><a>Information</a></h1>
+        <%= f.label :est_actif %>
+        <%= f.select :est_actif, [['Actif', true], ['Inactif', false]] %>
 
-          <h1><a>Information</a></h1>
+        <%= f.label :nom %>
+        <%= f.text_field :nom, class: 'form-control', placeholder: 'nom' %>
 
-          <%= f.label :est_actif %>
-          <%= f.select :est_actif, [['Actif', true], ['Inactif', false]] %>
+        <%= f.label :description %>
+        <%= f.text_field :description, class: 'form-control', placeholder: 'Description du service. Maximum 100 caractères' %>
 
-          <%= f.label :nom %>
-          <%= f.text_field :nom, class: 'form-control', placeholder: 'nom' %>
-
-          <%= f.label :description %>
-          <%= f.text_field :description, class: 'form-control', placeholder: 'Description du service. Maximum 100 caractères' %>
-        </div>
-
-        <div id="Tarification Service" class="col-md-6">
-
-          <h1><a>Tarification</a></h1>
-
-          <%= f.label "Tarification Subventionnee" %>
-          <%= f.select :sera_subventionnee, [['Oui', true], ['Non', false]] %>
-
-          <%= f.label "Tarification Parent (actuellement: #{@service.tarification_parent} $)" %>
-          <%= f.number_field :futur_tarification_parent, class: 'form-control', placeholder: "0 ($)" %>
-
-          <%= f.label "Tarification CISSS (actuellement: #{@service.tarification_cisss} $)" %>
-          <%= f.number_field :futur_tarification_cisss, class: 'form-control', placeholder: "0 ($)" %>
-
-          <%= f.label "Date d'Entree en Vigueur (Par defaut sera la date actuelle)" %>
-          <%= f.text_field :date_entree_vigueur, class: 'form-control', placeholder: 'AAAA-MM-JJ' %>
-        </div>
-      </div>
-        <br/>
-        <hr>
-
-        <%= f.label "Si vous connaissez l'ID du Local" %>
+        <%= f.label "Inserez l'ID du Local" %>
         <%= f.number_field :un_locals_id, class: 'form-control' %>
+      </div>
 
-      <%= f.submit "Sauvegarder les changements", class: "btn btn-primary" %>
+      <div class="column2">
+        <h1><a>Tarification</a></h1>
+        <%= f.label "Tarification Subventionnee" %>
+        <%= f.select :sera_subventionnee, [['Oui', true], ['Non', false]] %>
+
+        <%= f.label "Tarification Parent (actuellement: #{@service.tarification_parent} $)" %>
+        <%= f.number_field :futur_tarification_parent, class: 'form-control', placeholder: "0 ($)" %>
+
+        <%= f.label "Tarification CISSS (actuellement: #{@service.tarification_cisss} $)" %>
+        <%= f.number_field :futur_tarification_cisss, class: 'form-control', placeholder: "0 ($)" %>
+
+        <%= f.label "Date d'Entree en Vigueur (sinon date actuelle)" %>
+        <%= f.text_field :date_entree_vigueur, class: 'form-control', placeholder: 'AAAA-MM-JJ' %>
+      </div>
+
+      <div class="columnlogin">
+        <%= f.submit "Sauvegarder les changements", class: "btn btn-primary" %>
+      </div>
+
     <% end %>
+
   </div>
 </div>

@@ -1,140 +1,136 @@
 <% provide(:title, @service.nom) %>
 
 <div class="row">
+
   <h1>Page du Service</h1>
-  <aside class="col-md-12">
+  <hr>
+  <hr>
+
+  <aside class="column">
     <section>
-      <br/>
-      <h1>
-        <font size="5">
-          <strong>ID Service : <a><%= @service.id %></a></strong>
-        </font>
-      </h1>
-      <h1>
-        <font size="6">
-          <strong>Nom : <a><%= @service.nom %></a></strong>
-        </font>
-      </h1>
-      <% if current_user.role == 'directeur' %>
-        <li><%= link_to "Modifier service", edit_service_path(@service) %></li>
-      <% end %>
-      <br/>
-      <h1>
-        <font size="5">
-          <strong> Est actif : <a><%= @service.est_actif %></a></strong>
-          <br/>
-          <strong>Description : </strong>
-        </font>
-        <font size="4">
-         <%= @service.description %>
-        </font>
-      </h1>
-      <br/>
-      <br/>
-      <hr>
-      <hr>
-      <div id="main-container" class="container">
-        <div id="Tarification Actuelle" class="col-md-6">
-          <h1>
-            <font size="5">
-              <strong>Tarification Actuelle</strong>
-            </font>
-          </h1>
-          <br/>
-          <font size="2">
-            <h1> Subvention : <a><%= @service.est_subventionnee %></a></h1>  
-            <br/>
-              <h1><strong>Tarif Parent : <a><%= @service.tarification_parent %> $ </a></strong></h1>
-              <h1><strong>Tarif CISSS : <a><%= @service.tarification_cisss %> $ </a></strong></h1>
-            <br/>
-            <% if @service.date_entree_vigueur == nil %>
-              <h1> Expiration Tarification : <a>Jamais</a></h1>
-            <% else %>
-             <h1> Expiration Tarification : <a><%= @service.date_entree_vigueur %></a></h1>
-            <% end%>
-          </font>
-        </div>
-        <div id="Tarification a Venir" class="col-md-6">
-          <h1>
-            <font size="5">
-              <strong>Tarification à Venir</strong>
-            </font>
-          </h1>
-          <br/>
-          <% if @service.date_entree_vigueur == Date.today || @service.date_entree_vigueur == nil %>
 
-            <font size="2">
-              <h1> Date d' entree en vigueur : <a> n/a </a></h1>
-              <br/>
-              <h1> Subvention : <a> n/a </a></h1>  
-              <br/>
-              <h1><strong> Tarif Parent : <a> n/a </a></strong></h1>
-              <h1><strong> Tarif CISSS : <a> n/a </a></strong></h1>
-            </font>
-
-          <% else %>
-
-            <font size="2">
-              <h1> Date d' entree en vigueur : <a><%= @service.date_entree_vigueur %></a></h1>
-              <br/>
-              <h1> Subvention : <a><%= @service.sera_subventionnee %></a></h1>  
-              <br/>
-              <h1><strong> Tarif Parent : <a><%= @service.futur_tarification_parent %> $ </a></strong></h1>
-              <h1><strong> Tarif CISSS : <a><%= @service.futur_tarification_cisss %> $ </a></strong></h1>
-            </font>
-          <% end %>
-        </div>
-      </div>
-      <br/>
-      <hr> 
-       <div id="main-container" class="container">
-        <div id="Appartient au Local" class="col-md-12">
-          <h1>
-          <font size="5">
-        <strong>Appartient au Local : </strong>  
-      </font>
-      </h1>
-        <%= render template: 'un_locals/index' %>
-    </div>
-    <br/>
-      <br/>
-      <br/>
-    </div>
-    <hr>
-    <div id="main-container" class="container">
-      <div id="main-container" class="col-md-12">
+      <div class="column">
         <h1>
+          <font size="6">
+            <strong>Nom : <a><%= @service.nom %></a></strong>
+          </font>
+          <br/>
           <font size="5">
-            <strong>Notifications : </strong>  
+            <strong>Description : </strong>
+          </font>
+          <font size="4">
+            <%= @service.description %>
           </font>
         </h1>
+        <% if current_user.role == 'directeur' %>
+          <%= link_to "Modifier service", edit_service_path(@service) %>
+        <% end %>
+      </div>
+
+      <div class="column">
+        <h1>
+          <font size="5">
+            <strong> Service actif : <a><%= @service.est_actif %></a></strong>
+            <br/>
+            <strong>ID Service : <a><%= @service.id %></a></strong>
+          </font>
+        </h1>
+      </div>
+
       <br/>
-      <font size="2">
-        <h1>Mise en service : <a> <%= @service.created_at %> </a></h1>
-        <h1>Derniere mise à jour : <a> <%= @service.updated_at %> </a></h1>
-        <br/>
-      </font>
-      </div>
-      </div>
+      <br/>
+      <br/>
       <br/>
       <hr>
-      <div id="main-container" class="container">
-        <div id="Tarification Actuelle" class="col-md-9">
-          <h1>
-            <font size="5">
-              <strong>Historique Tarification ( <%= @service.audits.count %> )</strong>
-            </font>
-          </h1>
+
+      <div class="column">
+        <h1>
+          <font size="5">
+            <strong>Tarification Actuelle</strong>
+          </font>
+        </h1>
+        <br/>
+        <font size="2">
+          <h1> Subvention : <a><%= @service.est_subventionnee %></a></h1>
+          <% if @service.date_entree_vigueur == nil %>
+            <h1> Expiration tarification : <a>Jamais</a></h1>
+          <% else %>
+            <h1> Expiration tarification : <a><%= @service.date_entree_vigueur %></a></h1>
+          <% end %>
           <br/>
+          <h1><strong>Tarif Parent : <a><%= @service.tarification_parent %> $ </a></strong></h1>
+          <h1><strong>Tarif CISSS : <a><%= @service.tarification_cisss %> $ </a></strong></h1>
+        </font>
+      </div>
+
+      <div id="Nom" class="column">
+        <div style="border-left:1px solid #000;height:170px"></div>
+      </div>
+
+      <div class="column">
+        <h1>
+          <font size="5">
+            <strong>Tarification à Venir</strong>
+          </font>
+        </h1>
+        <br/>
+        <% if @service.date_entree_vigueur == Date.today || @service.date_entree_vigueur == nil %>
+
+          <font size="2">
+            <h1> Subvention : <a> n/a </a></h1>
+            <h1> Date d'entrée en vigueur : <a> n/a </a></h1>
+            <br/>
+            <h1><strong> Tarif Parent : <a> n/a </a></strong></h1>
+            <h1><strong> Tarif CISSS : <a> n/a </a></strong></h1>
+          </font>
+
+        <% else %>
+
+          <font size="2">
+            <h1> Subvention : <a><%= @service.sera_subventionnee %></a></h1>
+            <h1> Date d'entrée en vigueur : <a><%= @service.date_entree_vigueur %></a></h1>
+            <br/>
+            <h1><strong> Tarif Parent : <a><%= @service.futur_tarification_parent %> $ </a></strong></h1>
+            <h1><strong> Tarif CISSS : <a><%= @service.futur_tarification_cisss %> $ </a></strong></h1>
+          </font>
+        <% end %>
+      </div>
+
+      <br/>
+
+      <div class="column">
+        <hr>
+        <h1>
+          <font size="5">
+            <strong>Associé au local : </strong>
+          </font>
+        </h1>
+        <%= render template: 'un_locals/index' %>
+        <hr>
+        <h1>
+          <font size="5">
+            <strong>Activité</strong>
+          </font>
+        </h1>
+        <br/>
+        <font size="2">
+          <h1>Mise en service : <a> <%= @service.created_at %> </a></h1>
+          <h1>Derniere mise à jour : <a> <%= @service.updated_at %> </a></h1>
           <br/>
-            <font size="2">  
-              <%= @service.revisions %>
-            </font>
-          <hr>
+        </font>
+        <hr>
+        <h1>
+          <font size="5">
+            <strong>Historique Tarification ( <%= @service.audits.count %> )</strong>
+          </font>
+        </h1>
+        <br/>
+        <font size="2">
+          <%= @service.revisions %>
+        </font>
+
       </div>
-      </div>
-      </div>
-     <br/>
+
     </section>
   </aside>
 </div>

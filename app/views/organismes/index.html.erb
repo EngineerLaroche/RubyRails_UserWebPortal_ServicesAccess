@@ -7,10 +7,13 @@
     <hr>
     <br/>
     <%= form_tag(organismes_path, :method => "get", id: "search-form") do %>
+
         <%= text_field_tag :search, params[:search], placeholder: "Nom ou Email" %>
         <%= submit_tag "Recherche", class: "btn btn-primary", :email => nil %>
+
     <% end %>
   <% end %>
+  <br/>
   <br/>
 
   <table class="table table-striped">
